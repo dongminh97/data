@@ -4,7 +4,7 @@
 # In[14]:
 
 
-import streamlit as st
+
 import datetime
 import numpy as np
 import pandas as pd
@@ -15,6 +15,8 @@ import os
 import requests
 subprocess.check_call([sys.executable, '-m', 'pip', 'install','browser_cookie3'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install','gspread'])
+subprocess.check_call([sys.executable, '-m', 'pip', 'install','streamlit'])
+import streamlit as st
 import gspread
 import browser_cookie3
 import time
