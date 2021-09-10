@@ -38,7 +38,10 @@ for i in mid:
         pass
 filename = path+'\credentials.json'
 gc = gspread.service_account(filename=filename)
-sht1 = gc.open_by_key('1GyWSh7DGnHko9JoPMZaE7lIthw8jOIk6d_MIop1r1Jw').add_worksheet(title=sheet_name, rows="100", cols="20")
+try:
+    sht1 = gc.open_by_key('1GyWSh7DGnHko9JoPMZaE7lIthw8jOIk6d_MIop1r1Jw').add_worksheet(title=sheet_name, rows="100", cols="20")
+except:
+    sht1 = gc.open_by_key('1GyWSh7DGnHko9JoPMZaE7lIthw8jOIk6d_MIop1r1Jw').worksheet(sheet_name)
 cell = 1
 for i in cookies:
     for j in i:
